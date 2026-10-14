@@ -6,6 +6,19 @@ import android.view.View;
 import android.view.WindowManager;
 
 public class MainActivity extends NativeActivity {
+    static {
+        try {
+            System.loadLibrary("c++_shared");
+        } catch (Throwable t) {
+            // Ignored if handled by system
+        }
+        try {
+            System.loadLibrary("neonvelocity");
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
